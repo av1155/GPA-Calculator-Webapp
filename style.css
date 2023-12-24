@@ -219,12 +219,14 @@ button:hover {
         flex-direction: row;
         flex-wrap: wrap;
         align-items: center;
+        /* Set font size to 16px to prevent zooming on mobile */
     }
 
     .course input[type="text"] {
         flex-basis: 100%;
         margin-bottom: 10px;
         text-align: center;
+        font-size: 16px;
     }
 
     .course select {
@@ -232,6 +234,7 @@ button:hover {
         margin-right: 8px;
         margin-bottom: 15px;
         text-align-last: center;
+        font-size: 16px;
     }
 
     .course input[type="number"] {
@@ -239,6 +242,7 @@ button:hover {
         margin-right: 8px;
         margin-bottom: 15px;
         text-align: center;
+        font-size: 16px;
     }
 
     .remove-course {
@@ -249,14 +253,21 @@ button:hover {
     button {
         width: 100%;
         margin-top: 10px;
+        font-size: 20px;
     }
 
     #overall-gpa-inputs input {
         width: 100%;
         text-align: center;
+        font-size: 16px;
     }
 
     #calculate-overall-gpa-btn {
         width: 100%;
+    }
+
+    #gpa-output,
+    #overall-gpa-output {
+        font-size: 21px;
     }
 }
