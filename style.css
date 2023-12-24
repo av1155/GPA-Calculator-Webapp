@@ -39,6 +39,13 @@ h1 {
     align-items: center;
     justify-content: space-between;
     margin-bottom: 10px;
+    animation: courseEntry 0.5s ease-out;
+    transition:
+        max-height 0.5s ease,
+        opacity 0.5s ease;
+    max-height: 200px;
+    opacity: 1;
+    overflow: hidden;
 }
 
 /* Course Input and Select Box Styling */
@@ -74,6 +81,14 @@ h1 {
         box-shadow 0.3s ease;
 }
 
+.course input:focus,
+.course select:focus {
+    outline: 2px solid #f8b890;
+    /* Custom focus style */
+    outline-offset: -2px;
+    /* Adjust as needed */
+}
+
 /* Course Input and Select Box Hover Effects */
 .course input[type="text"]:hover,
 .course input[type="number"]:hover {
@@ -93,12 +108,12 @@ h1 {
     color: #c0392b;
     cursor: pointer;
     width: 20px;
-    height: 35px;
+    height: 30px;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 4px;
+    border-radius: 3px;
     transition:
         color 0.3s ease,
         transform 0.3s ease;
@@ -106,12 +121,14 @@ h1 {
     line-height: 1;
     margin: 0;
     text-align: center;
-    box-shadow: 0 0 0 transparent;
     transition:
         background-color 0.3s ease,
         color 0.3s ease,
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
+        transform 0.3s ease;
+}
+
+.course-removing {
+    animation: courseExit 0.5s ease-out forwards;
 }
 
 /* Remove Course Button Hover Effect */
@@ -119,7 +136,6 @@ h1 {
     color: #e74c3c;
     background-color: #f8d7da;
     transform: scale(1.1);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 /* General Button Styling */
@@ -213,13 +229,27 @@ button:hover {
     background-color: #c8641f;
 }
 
+/* Course Item Removal Animation */
+@keyframes courseExit {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+        max-height: 200px;
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-20px);
+        max-height: 0;
+    }
+}
+
 /* Responsive Design for Course Items */
 @media (max-width: 500px) {
     .course {
         flex-direction: row;
         flex-wrap: wrap;
         align-items: center;
-        /* Set font size to 16px to prevent zooming on mobile */
     }
 
     .course input[type="text"] {

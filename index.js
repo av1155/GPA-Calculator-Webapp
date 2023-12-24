@@ -1,5 +1,5 @@
 // Adds a new course input group to the DOM
-function addCourse() {
+function addCourse(callback) {
     const courseContainer = document.getElementById("course-container");
     let courseDiv = document.createElement("div");
     courseDiv.className = "course";
@@ -22,7 +22,23 @@ function addCourse() {
         <input type="number" placeholder="Credits" class="course-credits" min="0">
         <button type="button" onclick="removeCourse(this.parentElement)" class="remove-course">&#x2715;</button>
     `;
+
+    // Start with a max-height of 0
+    courseDiv.style.maxHeight = "0";
+
+    // Append the new div to the course container
     courseContainer.appendChild(courseDiv);
+
+    // After appending the courseDiv
+    setTimeout(() => {
+        courseDiv.style.maxHeight = "200px"; // Animate to a greater height
+        // Execute the callback function after the animation
+        setTimeout(() => {
+            if (callback) callback(courseDiv);
+        }, 500);
+    }, 10);
+
+    // Add behavior for Enter keypress
     addEnterKeyBehavior(courseDiv.querySelector(".course-credits"));
 }
 
@@ -113,28 +129,36 @@ function addEnterKeyBehavior(creditsInput) {
 // Handles Enter keypress to navigate between inputs or add new course
 function handleEnterKeyPress(event) {
     if (event.key === "Enter") {
-        event.preventDefault(); // prevent the default action
+        event.preventDefault(); // Prevent the default action
         const currentInput = event.target;
         const parent = currentInput.closest(".course");
         const nextParent = parent.nextElementSibling;
 
         if (currentInput.classList.contains("course-credits")) {
             if (nextParent) {
-                // Focus the next course name input
+                // Focus the next course name input if it exists
                 const nextCourseInput = nextParent.querySelector(".course-name");
                 nextCourseInput && nextCourseInput.focus();
             } else {
-                // If this is the last course, add a new course
-                addCourse();
+                // If this is the last course, add a new course and focus on it
+                addCourse((newCourseDiv) => {
+                    const newCourseInput = newCourseDiv.querySelector(".course-name");
+                    newCourseInput && newCourseInput.focus();
+                });
             }
         }
     }
 }
 
-// Global event listener for keypress
-document.addEventListener("keypress", handleEnterKeyPress);
-
-// Removes a course from the DOM
+// Removes a course from the DOM with animation
 function removeCourse(courseElement) {
-    document.getElementById("course-container").removeChild(courseElement);
+    courseElement.classList.add("course-removing"); // Add the class to trigger the animation
+
+    courseElement.addEventListener(
+        "animationend",
+        () => {
+            courseElement.remove(); // Remove the element after the animation ends
+        },
+        { once: true },
+    );
 }
