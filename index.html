@@ -1,49 +1,81 @@
 <!doctype html>
 <html lang="en">
+    <head>
+        <!-- Meta Information -->
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>GPA Calculator</title>
 
-<head>
-    <!-- Meta Information -->
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GPA Calculator</title>
-    <!-- CSS Link -->
-    <link rel="stylesheet" href="style.css" />
-</head>
+        <!-- Primary Meta Tags -->
+        <meta name="title" content="GPA Calculator" />
+        <meta
+            name="description"
+            content="Easily calculate your semester and cumulative GPA with the GPA Calculator Web App."
+        />
 
-<body>
-    <!-- Main Container -->
-    <div class="container">
-        <!-- Title -->
-        <h1>GPA Calculator</h1>
+        <!-- Open Graph / Facebook Meta Tags -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://av1155.github.io/GPA-Calculator-Webapp/" />
+        <meta property="og:title" content="GPA Calculator" />
+        <meta
+            property="og:description"
+            content="Easily calculate your semester and cumulative GPA with the GPA Calculator Web App."
+        />
+        <meta property="og:image" content="assets/property.png" />
 
-        <!-- Course Container -->
-        <div id="course-container"></div>
+        <!-- Twitter Meta Tags -->
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://av1155.github.io/GPA-Calculator-Webapp/" />
+        <meta property="twitter:title" content="GPA Calculator" />
+        <meta
+            property="twitter:description"
+            content="Easily calculate your semester and cumulative GPA with the GPA Calculator Web App."
+        />
+        <meta property="twitter:image" content="assets/property.png" />
 
-        <!-- Add Course Button -->
-        <button onclick="addCourse()">Add Course</button>
+        <!-- CSS Link -->
+        <link rel="stylesheet" href="style.css" />
+    </head>
 
-        <!-- Calculate GPA Button -->
-        <button onclick="calculateGPA()">Calculate GPA</button>
+    <body>
+        <!-- Main Container -->
+        <div class="container">
+            <!-- Title -->
+            <h1>GPA Calculator</h1>
 
-        <!-- GPA Output -->
-        <div id="gpa-output"></div>
+            <!-- Course Container -->
+            <div id="course-container"></div>
 
-        <!-- Overall GPA Inputs -->
-        <div id="overall-gpa-inputs">
-            <input type="number" id="current-overall-gpa" placeholder="Current Overall GPA" step="0.01" min="0"
-                max="4" />
-            <input type="number" id="total-credits-earned" placeholder="Total Credits Earned" min="0" />
+            <!-- Add Course Button -->
+            <button onclick="addCourse()">Add Course</button>
+
+            <!-- Calculate GPA Button -->
+            <button onclick="calculateGPA()">Calculate GPA</button>
+
+            <!-- GPA Output -->
+            <div id="gpa-output"></div>
+
+            <!-- Overall GPA Inputs -->
+            <div id="overall-gpa-inputs">
+                <input
+                    type="number"
+                    id="current-overall-gpa"
+                    placeholder="Current Overall GPA"
+                    step="0.01"
+                    min="0"
+                    max="4"
+                />
+                <input type="number" id="total-credits-earned" placeholder="Total Credits Earned" min="0" />
+            </div>
+
+            <!-- Calculate Overall GPA Button -->
+            <button onclick="calculateOverallGPA()">Calculate Overall GPA</button>
+
+            <!-- Overall GPA Output -->
+            <div id="overall-gpa-output"></div>
         </div>
 
-        <!-- Calculate Overall GPA Button -->
-        <button onclick="calculateOverallGPA()">Calculate Overall GPA</button>
-
-        <!-- Overall GPA Output -->
-        <div id="overall-gpa-output"></div>
-    </div>
-
-    <!-- JavaScript Link -->
-    <script src="index.js"></script>
-</body>
-
+        <!-- JavaScript Link -->
+        <script src="index.js"></script>
+    </body>
 </html>
