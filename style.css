@@ -1,3 +1,4 @@
+/* General Body Styles */
 body {
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
@@ -6,38 +7,41 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #ecf0f1;
+    background-color: #f5f5f5;
 }
 
+/* Main Container Styling */
 .container {
     text-align: center;
     background-color: #fff;
     padding: 20px;
-    border-radius: 5px;
+    border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 90%;
     max-width: 600px;
     margin: auto;
-    /* Center the container in the viewport */
 }
 
+/* Header (h1) Styling */
 h1 {
-    color: #333;
+    color: #2c3e50;
     margin-bottom: 20px;
 }
 
+/* Course Container Styling */
 #course-container {
     margin-bottom: 20px;
 }
 
+/* Course Item Styling */
 .course {
     display: flex;
     align-items: center;
-    /* Align items vertically */
     justify-content: space-between;
     margin-bottom: 10px;
 }
 
+/* Course Input and Select Box Styling */
 .course input[type="text"],
 .course input[type="number"] {
     padding: 10px;
@@ -46,51 +50,79 @@ h1 {
     margin-right: 8px;
     flex-grow: 1;
     font-size: 14px;
-    /* text-transform: uppercase; */
-    /* Inputs grow to fill the space */
+    background-color: #f8f9fa;
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
 .course select {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    background-color: #fff;
+    background-color: #f8f9fa;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 4px;
     margin-right: 8px;
     width: auto;
-    /* Let the select naturally fit its content */
     flex-grow: 0;
-    /* Select doesn't grow but fits content */
     font-size: 14px;
     cursor: pointer;
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
+/* Course Input and Select Box Hover Effects */
+.course input[type="text"]:hover,
+.course input[type="number"]:hover {
+    border-color: #aeb6bf;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.course select:hover {
+    border-color: #aeb6bf;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Remove Course Button Styling */
 .remove-course {
     background-color: transparent;
     border: none;
     color: #c0392b;
     cursor: pointer;
     width: 20px;
-    /* Smaller width */
-    height: 20px;
-    /* Smaller height to make it square */
+    height: 35px;
     padding: 0;
-    /* Remove padding */
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     border-radius: 4px;
-    /* Optional: for a rounded square look */
+    transition:
+        color 0.3s ease,
+        transform 0.3s ease;
+    font-size: 16px;
+    line-height: 1;
+    margin: 0;
+    text-align: center;
+    box-shadow: 0 0 0 transparent;
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
+/* Remove Course Button Hover Effect */
 .remove-course:hover {
     color: #e74c3c;
     background-color: #f8d7da;
-    /* Optional: light red background on hover */
+    transform: scale(1.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
+/* General Button Styling */
 button {
     padding: 10px 20px;
     background-color: #f47523;
@@ -102,41 +134,40 @@ button {
     margin-top: 10px;
     transition: background-color 0.3s ease;
     width: calc(50% - 4px);
-    /* Adjust width so two buttons fit in one line with a little gap */
 }
 
+/* Button Hover Effect */
 button:hover {
-    background-color: #c8641f;
+    background-color: #d35400;
 }
 
+/* GPA Output Styling */
 #gpa-output,
 #overall-gpa-output {
-    font-size: 20px;
-    color: #333;
-    background-color: #ecf0f1;
-    padding: 10px;
-    border-radius: 4px;
-    border: 1px solid #ddd;
+    font-size: 22px;
+    color: #2c3e50;
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #aeb6bf;
     text-align: center;
-    margin-top: 20px;
+    margin-top: 25px;
     display: block;
-    width: calc(100% - 20px);
-    /* Match the width with padding */
+    width: calc(100% - 30px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
 }
 
-/* Style the div that contains the overall GPA inputs and button */
-/* #overall-gpa-container { */
-/*     background-color: #ecf0f1; */
-/*     padding: 10px; */
-/*     border-radius: 4px; */
-/*     border: 1px solid #ddd; */
-/*     margin-top: 20px; */
-/* } */
+/* GPA Output Hover Effect */
+#gpa-output:hover,
+#overall-gpa-output:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
 
+/* Overall GPA Inputs Styling */
 #overall-gpa-inputs {
     display: flex;
     flex-direction: column;
-    /* Stack inputs vertically */
     align-items: center;
     gap: 10px;
     margin-bottom: 20px;
@@ -148,13 +179,22 @@ button:hover {
     border: 1px solid #ddd;
     border-radius: 4px;
     width: 60%;
-    /* Wider input box for better usability */
     max-width: 300px;
-    /* Maximum width can be set as needed */
     font-size: 14px;
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+    background-color: #f8f9fa;
+    text-align: center;
 }
 
-/* Style the Calculate Overall GPA button to match other buttons */
+/* Overall GPA Inputs Hover Effect */
+#overall-gpa-inputs input:hover {
+    border-color: #aeb6bf;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Calculate Overall GPA Button Styling */
 #calculate-overall-gpa-btn {
     background-color: #f47523;
     color: white;
@@ -165,71 +205,58 @@ button:hover {
     font-size: 16px;
     margin-top: 10px;
     width: calc(50% - 4px);
-    /* Adjust width to match other buttons */
     transition: background-color 0.3s ease;
 }
 
+/* Calculate Overall GPA Button Hover Effect */
 #calculate-overall-gpa-btn:hover {
     background-color: #c8641f;
-    /* Darker shade on hover */
 }
 
-/* Responsive adjustments for course input fields */
+/* Responsive Design for Course Items */
 @media (max-width: 500px) {
     .course {
-        flex-direction: column;
-        /* Stack the inputs vertically */
-        align-items: stretch;
-        /* Align items to stretch to the container width */
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
     }
 
-    .course input[type="text"],
-    .course input[type="number"] {
-        margin-right: 0;
+    .course input[type="text"] {
+        flex-basis: 100%;
         margin-bottom: 10px;
         text-align: center;
-        /* Center text and caret */
-        flex-grow: 1;
-        font-size: 14px;
     }
 
     .course select {
-        margin-right: 0;
-        /* Remove the right margin */
-        margin-bottom: 10px;
-        /* Add space between stacked inputs */
+        flex-basis: 43%;
+        margin-right: 8px;
+        margin-bottom: 15px;
         text-align-last: center;
     }
 
-    .course select {
-        text-align-last: center;
-        /* Center the text in select dropdown */
+    .course input[type="number"] {
+        flex-basis: auto;
+        margin-right: 8px;
+        margin-bottom: 15px;
+        text-align: center;
     }
 
     .remove-course {
-        margin-top: 10px;
-        /* Add space above the remove button */
-        width: 100%;
-        /* Full width for remove button */
-        height: auto;
-        /* Auto height to adjust to content */
+        flex-basis: 5%;
+        margin-bottom: 15px;
     }
 
     button {
         width: 100%;
-        /* Full width on smaller screens */
         margin-top: 10px;
     }
 
     #overall-gpa-inputs input {
         width: 100%;
         text-align: center;
-
-        /* Full width for overall GPA inputs */
     }
 
     #calculate-overall-gpa-btn {
         width: 100%;
-        /* Full width for the calculate button */
     }
 }

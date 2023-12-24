@@ -1,13 +1,10 @@
-document.addEventListener("DOMContentLoaded", () => {
-    addCourse(); // Add initial course input fields
-});
-
+// Adds a new course input group to the DOM
 function addCourse() {
     const courseContainer = document.getElementById("course-container");
     let courseDiv = document.createElement("div");
     courseDiv.className = "course";
     courseDiv.innerHTML = `
-<input type="text" placeholder="Course Name" class="course-name" oninput="this.value = this.value.toUpperCase()">
+        <input type="text" placeholder="Course Name" class="course-name" oninput="this.value = this.value.toUpperCase()">
         <select class="course-grade">
             <option value="A+">A+</option>
             <option value="A">A</option>
@@ -26,11 +23,10 @@ function addCourse() {
         <button type="button" onclick="removeCourse(this.parentElement)" class="remove-course">&#x2715;</button>
     `;
     courseContainer.appendChild(courseDiv);
-
-    // Add the keypress event to the newly added course credit input
-    courseDiv.querySelector(".course-credits").addEventListener("keypress", handleEnterKeyPress);
+    addEnterKeyBehavior(courseDiv.querySelector(".course-credits"));
 }
 
+// Calculates and displays the semester GPA
 function calculateGPA() {
     const courses = document.querySelectorAll(".course");
     let totalCredits = 0;
@@ -50,7 +46,7 @@ function calculateGPA() {
         F: 0.0,
     };
 
-    courses.forEach((course) => {
+    for (let course of courses) {
         let grade = course.querySelector(".course-grade").value.toUpperCase();
         let credits = parseInt(course.querySelector(".course-credits").value);
         let gradePoints = convertGPA[grade] * credits;
@@ -58,14 +54,19 @@ function calculateGPA() {
         if (!isNaN(gradePoints)) {
             totalCredits += credits;
             totalGradePoints += gradePoints;
+        } else {
+            alert("Please fill in all fields.");
+            return;
         }
-    });
+    }
 
     let semesterGpa = (totalGradePoints / totalCredits).toFixed(2);
-    document.getElementById("gpa-output").textContent = `Semester GPA: ${semesterGpa}`;
+    if (!isNaN(semesterGpa)) {
+        document.getElementById("gpa-output").textContent = `Semester GPA: ${semesterGpa}`;
+    }
 }
 
-// Function to calculate the overall GPA when the button is clicked
+// Calculates and displays the overall GPA
 function calculateOverallGPA() {
     // Get the semester GPA from the previous calculation
     const semesterGPA = parseFloat(document.getElementById("gpa-output").textContent.split(": ")[1]);
@@ -87,7 +88,11 @@ function calculateOverallGPA() {
             semesterGPA,
             semesterCredits,
         );
-        document.getElementById("overall-gpa-output").textContent = `Overall GPA: ${newOverallGPA}`; // Changed line
+
+        let newTotalCreditsEarned = totalCreditsEarned + semesterCredits;
+
+        document.getElementById("overall-gpa-output").textContent =
+            `Overall GPA: ${newOverallGPA} (Total Credits: ${newTotalCreditsEarned})`;
     } else {
         alert("Please fill in all fields with valid numbers.");
     }
@@ -100,7 +105,12 @@ function calculateUpdatedOverallGPA(currentGPA, totalCredits, semesterGPA, semes
     return updatedOverallGPA.toFixed(2);
 }
 
-// Updated function to handle Enter keypress
+// Adds behavior to Enter keypress for course credits input
+function addEnterKeyBehavior(creditsInput) {
+    creditsInput.addEventListener("keypress", handleEnterKeyPress);
+}
+
+// Handles Enter keypress to navigate between inputs or add new course
 function handleEnterKeyPress(event) {
     if (event.key === "Enter") {
         event.preventDefault(); // prevent the default action
@@ -121,9 +131,10 @@ function handleEnterKeyPress(event) {
     }
 }
 
-// Add event listener for the Enter keypress
+// Global event listener for keypress
 document.addEventListener("keypress", handleEnterKeyPress);
 
+// Removes a course from the DOM
 function removeCourse(courseElement) {
     document.getElementById("course-container").removeChild(courseElement);
 }
