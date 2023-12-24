@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GPA Calculator</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="container">
+        <h1>GPA Calculator</h1>
+        <div id="course-container"></div>
+        <button onclick="addCourse()">Add Course</button>
+        <button onclick="calculateGPA()">Calculate GPA</button>
+        <div id="gpa-output"></div>
+
+        <div id="overall-gpa-inputs">
+            <input type="number" id="current-overall-gpa" placeholder="Current Overall GPA" step="0.01" min="0"
+                max="4" />
+            <input type="number" id="total-credits-earned" placeholder="Total Credits Earned" min="0" />
+        </div>
+        <button onclick="calculateOverallGPA()">Calculate Overall GPA</button>
+        <div id="overall-gpa-output"></div>
+    </div>
+    <script src="index.js"></script>
+</body>
+
+</html>

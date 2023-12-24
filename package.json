@@ -1,0 +1,11 @@
+{
+  "name": "gpa-calculator-webapp",
+  "version": "1.0.0",
+  "description": "Webapp GPA Calculator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Andrea A. Venti Fuentes",
+  "license": "ISC"
+}

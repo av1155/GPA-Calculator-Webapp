@@ -1,0 +1,235 @@
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ecf0f1;
+}
+
+.container {
+    text-align: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 600px;
+    margin: auto;
+    /* Center the container in the viewport */
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#course-container {
+    margin-bottom: 20px;
+}
+
+.course {
+    display: flex;
+    align-items: center;
+    /* Align items vertically */
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.course input[type="text"],
+.course input[type="number"] {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-right: 8px;
+    flex-grow: 1;
+    font-size: 14px;
+    /* text-transform: uppercase; */
+    /* Inputs grow to fill the space */
+}
+
+.course select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-right: 8px;
+    width: auto;
+    /* Let the select naturally fit its content */
+    flex-grow: 0;
+    /* Select doesn't grow but fits content */
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.remove-course {
+    background-color: transparent;
+    border: none;
+    color: #c0392b;
+    cursor: pointer;
+    width: 20px;
+    /* Smaller width */
+    height: 20px;
+    /* Smaller height to make it square */
+    padding: 0;
+    /* Remove padding */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    /* Optional: for a rounded square look */
+}
+
+.remove-course:hover {
+    color: #e74c3c;
+    background-color: #f8d7da;
+    /* Optional: light red background on hover */
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #f47523;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+    width: calc(50% - 4px);
+    /* Adjust width so two buttons fit in one line with a little gap */
+}
+
+button:hover {
+    background-color: #c8641f;
+}
+
+#gpa-output,
+#overall-gpa-output {
+    font-size: 20px;
+    color: #333;
+    background-color: #ecf0f1;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    text-align: center;
+    margin-top: 20px;
+    display: block;
+    width: calc(100% - 20px);
+    /* Match the width with padding */
+}
+
+/* Style the div that contains the overall GPA inputs and button */
+/* #overall-gpa-container { */
+/*     background-color: #ecf0f1; */
+/*     padding: 10px; */
+/*     border-radius: 4px; */
+/*     border: 1px solid #ddd; */
+/*     margin-top: 20px; */
+/* } */
+
+#overall-gpa-inputs {
+    display: flex;
+    flex-direction: column;
+    /* Stack inputs vertically */
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+#overall-gpa-inputs input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 60%;
+    /* Wider input box for better usability */
+    max-width: 300px;
+    /* Maximum width can be set as needed */
+    font-size: 14px;
+}
+
+/* Style the Calculate Overall GPA button to match other buttons */
+#calculate-overall-gpa-btn {
+    background-color: #f47523;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    width: calc(50% - 4px);
+    /* Adjust width to match other buttons */
+    transition: background-color 0.3s ease;
+}
+
+#calculate-overall-gpa-btn:hover {
+    background-color: #c8641f;
+    /* Darker shade on hover */
+}
+
+/* Responsive adjustments for course input fields */
+@media (max-width: 500px) {
+    .course {
+        flex-direction: column;
+        /* Stack the inputs vertically */
+        align-items: stretch;
+        /* Align items to stretch to the container width */
+    }
+
+    .course input[type="text"],
+    .course input[type="number"] {
+        margin-right: 0;
+        margin-bottom: 10px;
+        text-align: center;
+        /* Center text and caret */
+        flex-grow: 1;
+        font-size: 14px;
+    }
+
+    .course select {
+        margin-right: 0;
+        /* Remove the right margin */
+        margin-bottom: 10px;
+        /* Add space between stacked inputs */
+        text-align-last: center;
+    }
+
+    .course select {
+        text-align-last: center;
+        /* Center the text in select dropdown */
+    }
+
+    .remove-course {
+        margin-top: 10px;
+        /* Add space above the remove button */
+        width: 100%;
+        /* Full width for remove button */
+        height: auto;
+        /* Auto height to adjust to content */
+    }
+
+    button {
+        width: 100%;
+        /* Full width on smaller screens */
+        margin-top: 10px;
+    }
+
+    #overall-gpa-inputs input {
+        width: 100%;
+        text-align: center;
+
+        /* Full width for overall GPA inputs */
+    }
+
+    #calculate-overall-gpa-btn {
+        width: 100%;
+        /* Full width for the calculate button */
+    }
+}
