@@ -84,9 +84,7 @@ h1 {
 .course input:focus,
 .course select:focus {
     outline: 2px solid #f8b890;
-    /* Custom focus style */
     outline-offset: -2px;
-    /* Adjust as needed */
 }
 
 /* Course Input and Select Box Hover Effects */
@@ -202,6 +200,11 @@ button:hover {
         box-shadow 0.3s ease;
     background-color: #f8f9fa;
     text-align: center;
+}
+
+#overall-gpa-inputs input:focus {
+    outline: 2px solid #f8b890;
+    outline-offset: -2px;
 }
 
 /* Overall GPA Inputs Hover Effect */
