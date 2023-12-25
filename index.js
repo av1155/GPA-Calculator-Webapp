@@ -29,16 +29,17 @@ function addCourse(callback) {
     // Append the new div to the course container
     courseContainer.appendChild(courseDiv);
 
-    // After appending the courseDiv
+    // Start the animation
     setTimeout(() => {
         courseDiv.style.maxHeight = "200px"; // Animate to a greater height
-        // Execute the callback function after the animation
-        setTimeout(() => {
-            if (callback) callback(courseDiv);
-        }, 500);
     }, 10);
 
+    // Execute the callback function immediately after appending
+    if (callback) callback(courseDiv);
+
     // Add behavior for Enter keypress
+    // Add behavior for Enter keypress to both inputs
+    addEnterKeyBehavior(courseDiv.querySelector(".course-name"));
     addEnterKeyBehavior(courseDiv.querySelector(".course-credits"));
 }
 
@@ -132,19 +133,30 @@ function handleEnterKeyPress(event) {
         event.preventDefault(); // Prevent the default action
         const currentInput = event.target;
         const parent = currentInput.closest(".course");
-        const nextParent = parent.nextElementSibling;
 
-        if (currentInput.classList.contains("course-credits")) {
+        if (currentInput.classList.contains("course-name")) {
+            // If the current input is the course name, move to the course credits input
+            const creditsInput = parent.querySelector(".course-credits");
+            creditsInput && creditsInput.focus();
+        } else if (currentInput.classList.contains("course-credits")) {
+            const nextParent = parent.nextElementSibling;
+
             if (nextParent) {
                 // Focus the next course name input if it exists
                 const nextCourseInput = nextParent.querySelector(".course-name");
                 nextCourseInput && nextCourseInput.focus();
             } else {
-                // If this is the last course, add a new course and focus on it
+                // If this is the last course, add a new course and focus on its course name input
                 addCourse((newCourseDiv) => {
                     const newCourseInput = newCourseDiv.querySelector(".course-name");
                     newCourseInput && newCourseInput.focus();
                 });
+            }
+        } else {
+            // Handle navigation for overall GPA inputs
+            if (currentInput.id === "current-overall-gpa") {
+                const totalCreditsInput = document.getElementById("total-credits-earned");
+                totalCreditsInput && totalCreditsInput.focus();
             }
         }
     }
@@ -162,3 +174,10 @@ function removeCourse(courseElement) {
         { once: true },
     );
 }
+
+// Attach the Enter keypress event listener to the current overall GPA input
+window.onload = function() {
+    addEnterKeyBehavior(document.getElementById("current-overall-gpa"));
+    // Add listeners to any existing course inputs if necessary
+    document.querySelectorAll(".course-name, .course-credits").forEach(addEnterKeyBehavior);
+};
